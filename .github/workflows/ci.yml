@@ -35,6 +35,14 @@ jobs:
     name: Semgrep Scan
     uses: ./.github/workflows/security_semgrep.yml
 
+  dependency-scan:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    name: Dependency Scan
+    uses: ./.github/workflows/security_dependency.yml
+
   container-scan-trivy:
     permissions:
       actions: read
