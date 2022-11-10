@@ -39,4 +39,4 @@ jobs:
     permissions:
       security-events: write
     name: Dastardly
-    uses: ./.github/workflows/security-dastardly.yml
+    uses: ./.github\workflows\security_dastardly.yml
