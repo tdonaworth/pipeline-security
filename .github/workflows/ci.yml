@@ -35,6 +35,11 @@ jobs:
     name: Semgrep Scan
     uses: ./.github/workflows/security_semgrep.yml
   
+  linting:
+    permissions:
+      security-events: write
+    name: Megalinter
+    uses: ./.github\workflows\megalinter.yml
   # dast-scan:
   #   permissions:
   #     security-events: write
