@@ -11,12 +11,15 @@ on:
       - '*.md'
 
 jobs:
-
-  unit-tests:
-    name: Unit Tests
-    run: |
-      echo "running unit test..."
-      echo "unit tests passed!"
+  CI:
+    name: CodeQL Analyze
+    runs-on: ubuntu-latest
+    steps:
+      unit-tests:
+      name: Unit Tests
+      run: |
+        echo "running unit test..."
+        echo "unit tests passed!"
 
   codeql-analysis:
     permissions:
