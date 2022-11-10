@@ -23,38 +23,39 @@ CodeQL is free for research and open source.
 * [GitHub Action](https://github.com/github/codeql-action)
 ### Pre-Commit
 * Requires Manual Scripting
+<details>
+  <summary>Example</summary>
+    ```yaml
+    repos: 
+      - repo: local
+        hooks:
+        - id: codeql
+            name: codeql
+            entry: ./codql.sh
+            language: system
+    ```
+    ```bash
+    #codeql.sh
+    #!/bin/bash
 
-Example:
-```yaml
-repos: 
-  - repo: local
-    hooks:
-    - id: codeql
-        name: codeql
-        entry: ./codql.sh
-        language: system
-```
-```bash
-#codeql.sh
-#!/bin/bash
-
-exec 1>&2
-exitVal=0
-while read -r f
-do
-  filename="${f##*/}"
-  extension="${filename##*.}"
-  p="$PWD/$f";
-  if [[ -f "$p" ]] && { [ "$extension" == "ql" ] || [ "$extension" == "qll" ]; }
-  then
-    if ! codeql query format --check-only "$p"
-    then
-      exitVal=1
-    fi
-  fi
-done <<<"$(git diff --cached --relative --name-only)"
-exit $exitVal
-```
+    exec 1>&2
+    exitVal=0
+    while read -r f
+    do
+      filename="${f##*/}"
+      extension="${filename##*.}"
+      p="$PWD/$f";
+      if [[ -f "$p" ]] && { [ "$extension" == "ql" ] || [ "$extension" == "qll" ]; }
+      then
+        if ! codeql query format --check-only "$p"
+        then
+          exitVal=1
+        fi
+      fi
+    done <<<"$(git diff --cached --relative --name-only)"
+    exit $exitVal
+    ```
+</details>
 
 
 ## Semgrep
