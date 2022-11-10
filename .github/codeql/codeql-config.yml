@@ -7,6 +7,6 @@ queries:
     uses: security-extended
 
 paths:
-  - ./app
+  - app/
 paths-ignore:
-  - ./docs
+  - docs/
