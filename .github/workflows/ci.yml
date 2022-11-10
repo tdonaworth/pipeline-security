@@ -43,6 +43,8 @@ jobs:
 
   dast-scan:
     permissions:
+      actions: read
+      contents: read
       security-events: write
     name: Dastardly
     uses: ./.github/workflows/security_dastardly.yml
