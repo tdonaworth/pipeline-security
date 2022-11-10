@@ -21,7 +21,7 @@ jobs:
       - name: Run App
         run: |
           docker build -t todo .
-          docker run --rm -p 5000:5000 todo
+          docker run --rm -p 5000:5000 -d todo
           echo "Inserting record.."
           curl -X POST http://127.0.0.1:5000/item -d '{"item": "DAST testing in action"}' -H 'Content-Type: application/json'
         
