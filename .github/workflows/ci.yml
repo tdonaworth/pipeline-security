@@ -1,6 +1,7 @@
 name: Continuous Integration
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
@@ -33,3 +34,9 @@ jobs:
       security-events: write
     name: Semgrep Scan
     uses: ./.github/workflows/security_semgrep.yml
+  
+  dast-scan:
+    permissions:
+      security-events: write
+    name: Dastardly
+    uses: ./.github/workflows/security-dastardly.yml
