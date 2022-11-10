@@ -3,6 +3,9 @@ A repository that demonstrates some common pipeline security practices using Git
 
 # Workflow:
 
+## Linting
+### Megalinter
+
 ## SAST
 
 ### CodeQL
