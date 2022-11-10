@@ -39,13 +39,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
           DISABLE: COPYPASTE,SPELL # Uncomment to disable copy-paste and spell checks
+          SARIF_REPORTER: true
+          SARIF_REPORTER_FILE_NAME: megalinter-report.sarif
 
       # Upload MegaLinter artifacts
-      - name: Archive production artifacts
+      - name: Upload MegaLinter scan results to GitHub Security tab
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: github/codeql-action/upload-sarif@v2
         with:
-          name: MegaLinter reports
-          path: |
-            megalinter-reports
-            mega-linter.log
+          sarif_file: 'megalinter-report.sarif'
