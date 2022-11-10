@@ -39,9 +39,10 @@ jobs:
     permissions:
       security-events: write
     name: Megalinter
-    uses: ./.github\workflows\megalinter.yml
+    uses: ./.github/workflows/megalinter.yml
+    
   # dast-scan:
   #   permissions:
   #     security-events: write
   #   name: Dastardly
-  #   uses: ./.github\workflows\security_dastardly.yml
+  #   uses: ./.github/workflows/security_dastardly.yml
