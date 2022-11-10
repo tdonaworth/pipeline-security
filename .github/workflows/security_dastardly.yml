@@ -23,7 +23,7 @@ jobs:
           docker build -t todo .
           docker run --rm -p 5000:5000 -d todo
           echo "Inserting record.."
-          curl -X POST http://127.0.0.1:5000/item/new -d '{"item": "DAST testing in action"}' -H 'Content-Type: application/json'
+          curl -X POST http://127.0.0.1:5000/item/new -d '{"item": "DAST testing in action-123"}' -H 'Content-Type: application/json'
         
       - name: Run Dastardly Action Step
         uses: PortSwigger/dastardly-github-action@main

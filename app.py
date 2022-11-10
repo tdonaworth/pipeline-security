@@ -21,7 +21,7 @@ def add_item():
 
    #Return error if item not added
    if res_data is None:
-      response = Response("{'error': 'Item not added - '}"  + item, status=400 , mimetype='application/json')
+      response = Response("{'error': 'Item not added'}", status=400 , mimetype='application/json')
       return response
    
    #Return response
@@ -47,7 +47,7 @@ def get_item():
    
    #Return 404 if item not found
    if status is None:
-      response = Response("{'error': 'Item Not Found - '}"  + item_name, status=404 , mimetype='application/json')
+      response = Response(f"{'error': 'Item Not Found - {item_name}'}", status=404 , mimetype='application/json')
       return response
 
    #Return status
@@ -68,7 +68,7 @@ def update_status():
    #Update item in the list
    res_data = helper.update_status(item, status)
    if res_data is None:
-      response = Response("{'error': 'Error updating item - '" + item + ", " + status   +  "}", status=400 , mimetype='application/json')
+      response = Response(f"{'error': 'Error updating item - {item}, {status}'}", status=400 , mimetype='application/json')
       return response
    
    #Return response
@@ -85,7 +85,7 @@ def delete_item():
    #Delete item from the list
    res_data = helper.delete_item(item)
    if res_data is None:
-      response = Response("{'error': 'Error deleting item - '" + item +  "}", status=400 , mimetype='application/json')
+      response = Response(f"{'error': 'Error deleting item - {item}'}", status=400 , mimetype='application/json')
       return response
    
    #Return response
