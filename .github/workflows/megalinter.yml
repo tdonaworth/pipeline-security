@@ -47,4 +47,4 @@ jobs:
         if: ${{ success() }} || ${{ failure() }}
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: 'megalinter-report.sarif'
+          sarif_file: 'megalinter-reports/megalinter-report.sarif'
