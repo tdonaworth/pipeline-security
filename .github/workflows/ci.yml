@@ -15,7 +15,6 @@ jobs:
     name: CodeQL Analyze
     runs-on: ubuntu-latest
     steps:
-      unit-tests:
       name: Unit Tests
       run: |
         echo "running unit test..."
