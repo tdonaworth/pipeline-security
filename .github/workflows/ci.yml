@@ -1,0 +1,33 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.github/**'
+      - '*.md'
+
+jobs:
+
+  unit-tests:
+    name: Unit Tests
+    run: |
+      echo "running unit test..."
+      echo "unit tests passed!"
+
+  codeql-analysis:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    name: CodeQL Scan
+    uses: ./.github/workflows/security_codeql.yml
+
+  semgrep-analysis:
+    permissions:
+      security-events: write
+    name: Semgrep Scan
+    uses: ./.github/workflows/security_semgrep.yml

@@ -1,0 +1,28 @@
+POST http://localhost:5000/item/new HTTP/1.1
+Content-Type: application/json
+
+{
+    "item": "Create Tests"
+}
+
+###
+
+GET http://localhost:5000/items/all HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:5000/item/status?name=Create+Tests HTTP/1.1
+Content-Type: application/json
+
+###
+
+PUT http://localhost:5000/item/update HTTP/1.1
+Content-Type: application/json
+
+{
+    "item": "Create Tests", "status": "Completed"
+}
+ 
+
+

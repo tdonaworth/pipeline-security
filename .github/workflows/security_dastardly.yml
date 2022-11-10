@@ -1,0 +1,31 @@
+name: DASTardly
+on:
+  workflow_call:
+
+jobs:
+  dastardly:
+    name: DAST (Dastardly)
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run App
+        run: |
+          docker build -t todo .
+          docker run --rm -p 5000:5000 todo
+          echo "Inserting record.."
+          curl -X POST http://127.0.0.1:5000/item -d '{"item": "DAST testing in action"}' -H 'Content-Type: application/json'
+        
+      - name: Run Dastardly Action Step
+        uses: PortSwigger/dastardly-github-action@main
+        with:
+          target-url: 'http://localhost:5000'

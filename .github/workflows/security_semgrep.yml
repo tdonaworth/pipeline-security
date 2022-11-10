@@ -1,0 +1,32 @@
+name: Semgrep
+on:
+  workflow_call:
+
+jobs:
+  semgrep:
+    permissions:
+      security-events: write
+    name: Semgrep Analyze
+    runs-on: ubuntu-latest
+    container:
+      image: returntocorp/semgrep
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Scan with semgrep, supplying any policy rules to SMEGREP_RULES.
+      # Save the output to sarif output, and let CodeQL analyze it in the
+      # next step.
+      # If you want to fail the job on a finding here, add "--error"
+      - name: Semgrep Scan
+        run: |
+          echo "SEMGREP_TO_UPLOAD=semgrep.sarif" >> $GITHUB_ENV
+          semgrep scan --sarif --output=semgrep.sarif --metrics=off
+        env:
+          SEMGREP_RULES: "p/default"
+
+      - name: Upload SARIF file for GitHub Advanced Security Dashboard
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ env.SEMGREP_TO_UPLOAD }}
+        if: always()
