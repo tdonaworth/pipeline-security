@@ -34,6 +34,14 @@ jobs:
       security-events: write
     name: Semgrep Scan
     uses: ./.github/workflows/security_semgrep.yml
+
+  container-scan-trivy:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    name: Trivy Scan
+    uses: ./.github/workflows/security_container.yml
   
   linting:
     permissions:
