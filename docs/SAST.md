@@ -156,5 +156,5 @@ snyk code test --severity-threshold=high
 ```
 
 ## :warning: SonarQube / SonarCloud :warning:
-:warning: :exclaimation: <span style="color:red"> **SonarQube/Cloud is NOT ENOUGH** </span> :exclaimation: :warning:
+:warning: <span style="color:red"> **SonarQube/Cloud is NOT ENOUGH** </span> :warning:
 If you rely on SonarQube/Cloud as your only form of SAST, then you do NOT have sufficient SAST tooling in place. SonarQube/Cloud has limited Linting capabilities, and even more limited SAST abilities. It can detect some things, but compared to other Linters and SAST tools, it simply isn't enough and does not meet the needs to be considered a stand-alone SAST solution.
