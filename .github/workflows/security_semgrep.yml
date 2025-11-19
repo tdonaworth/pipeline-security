@@ -12,7 +12,7 @@ jobs:
       image: returntocorp/semgrep
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
 
       # Scan with semgrep, supplying any policy rules to SMEGREP_RULES.
       # Save the output to sarif output, and let CodeQL analyze it in the
