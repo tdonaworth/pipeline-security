@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
 
       - name: Run App
         run: |
@@ -26,6 +26,6 @@ jobs:
       # curl -X POST http://127.0.0.1:5000/item/new -d '{"item": "DAST testing in action-123"}' -H 'Content-Type: application/json'
         
       - name: Run Dastardly Action Step
-        uses: PortSwigger/dastardly-github-action@main
+        uses: PortSwigger/dastardly-github-action@be689170753f3243af6c7e87c1eaa5b89d91205d # main
         with:
           target-url: 'http://localhost:5000'
