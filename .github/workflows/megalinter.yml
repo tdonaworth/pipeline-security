@@ -45,6 +45,6 @@ jobs:
       # Upload MegaLinter artifacts
       - name: Upload MegaLinter scan results to GitHub Security tab
         if: ${{ success() }} || ${{ failure() }}
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@915412ff23e8b7659517e607487dbeae018f2934 # v4
         with:
           sarif_file: 'megalinter-reports/megalinter-report.sarif'
